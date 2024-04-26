@@ -10,12 +10,12 @@ JOIN customers
 USING (customer_id) 
 JOIN employees
 USING (employee_id)
-WHERE order_id IN(SELECT order_id
+WHERE customers.city = 'London' AND  employees.city = 'London'
+					AND order_id IN(SELECT order_id
 					FROM orders
 					JOIN shippers
 					ON orders.ship_via=shippers.shipper_id
-					WHERE company_name='United Package' )
-AND	customers.city = 'London' AND  employees.city = 'London'
+					WHERE company_name='United Package')
 
 
 -- 2. Наименование продукта, количество товара (product_name и units_in_stock в табл products),
